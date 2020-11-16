@@ -10,7 +10,10 @@ function App() {
   let path = useRef(null);
   
 useEffect(()=>{
-  gsap.to(path, {duration: 2, delay: 1, css:{stroke: 'red'} })
+  let length = path.getTotalLength();
+  console.log(length)
+  gsap.set(path, {strokeDasharray: length})
+  gsap.fromTo(path, 3, {strokeDashoffset:length}, {strokeDashoffset:0})
 
 }, [])
 
